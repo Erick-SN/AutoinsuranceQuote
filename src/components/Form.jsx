@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-
+import { getYearDifference } from '../helper';
 const Input = styled.div`
   display: flex;
   margin-bottom: 1rem;
@@ -68,6 +68,9 @@ const Form = () => {
       return;
     }
     setError(false);
+    let result = 2000;
+    const difference = getYearDifference(year);
+    result -= (difference * 3 * result) / 100;
   };
 
   const { brand, year, type } = data;
