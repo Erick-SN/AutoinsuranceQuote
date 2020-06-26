@@ -16,7 +16,7 @@ const Abstract = ({ data }) => {
   return (
     <>
       <Container>
-        <h2>Quote</h2>
+        <h2>Summary</h2>
         <ul>
           <li>Brand: {upperCase(brand)}</li>
           <li>Type: {upperCase(type)}</li>

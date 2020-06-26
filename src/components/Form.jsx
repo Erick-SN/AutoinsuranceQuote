@@ -26,7 +26,7 @@ const InputRadio = styled.input`
 `;
 
 const Button = styled.button`
-  background-color: #00838f;
+  background-color: #2f3f80;
   font-size: 16px;
   width: 100%;
   padding: 1rem;
@@ -37,13 +37,13 @@ const Button = styled.button`
   transition: background-color 0.3s ease;
   margin-top: 2rem;
   &:hover {
-    background-color: #26c6da;
+    background-color: #161569;
     cursor: pointer;
   }
 `;
 
 const Error = styled.div`
-  background-color: red;
+  background-color: #161569;
   color: white;
   padding: 1rem;
   width: 100;
@@ -131,7 +131,7 @@ const Form = ({ setAbstract, setLoading }) => {
           />
           Premium
         </Input>
-        <Button type='submit'>Quote</Button>
+        <Button type='submit'>Estimate</Button>
       </form>
     </>
   );

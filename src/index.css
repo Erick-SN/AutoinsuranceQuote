@@ -2,13 +2,7 @@ html {
   box-sizing: border-box;
 }
 body {
-  background: #e96443; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #904e95,
-    #e96443
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #904e95, #e96443);
+  background: #161569; /* fallback for old browsers */
   font-family: Arial, Helvetica, sans-serif;
 }
 ul {

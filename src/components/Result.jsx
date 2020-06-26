@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 const Message = styled.p`
-  background-color: rgb(127, 224, 237);
+  background-color: #505488;
   margin-top: 2rem;
   padding: 1rem;
   text-align: center;
@@ -11,13 +11,13 @@ const Message = styled.p`
 const ResultQuote = styled.div`
   text-align: center;
   padding: 0.5rem;
-  border: 1px solid #26c6da;
-  background-color: rgb(127, 224, 237);
+  /* border: 1px solid #26c6da; */
+  background-color: #505488;
   margin-top: 1rem;
   position: relative;
 `;
 const Text = styled.p`
-  color: #00838f;
+  color: white;
   padding: 1rem;
   text-transform: uppercase;
   font-weight: bold;
@@ -39,7 +39,7 @@ const Result = ({ quote }) => {
               key={quote}
               timeout={{ enter: 500, exit: 500 }}>
               <Text>
-                Quote: $<span>{quote}</span>
+                Total: $<span>{quote}</span>
               </Text>
             </CSSTransition>
           </TransitionGroup>
