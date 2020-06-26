@@ -40,19 +40,44 @@ const Button = styled.button`
   }
 `;
 
+const Error = styled.div`
+  background-color: red;
+  color: white;
+  padding: 1rem;
+  width: 100;
+  text-align: center;
+  margin-bottom: 2rem;
+`;
+
 const Form = () => {
+  const [error, setError] = useState(false);
   const [data, setData] = useState({
     brand: '',
     year: '',
     type: '',
   });
+
+  const hanldeChangeData = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  const onSubmitQuote = (e) => {
+    e.preventDefault();
+    if (brand.trim() === '' || year.trim() === '' || type.trim() === '') {
+      setError(true);
+      return;
+    }
+    setError(false);
+  };
+
   const { brand, year, type } = data;
   return (
     <>
-      <form>
+      <form onSubmit={onSubmitQuote}>
+        {error ? <Error>All inputs are required</Error> : null}
         <Input>
           <Label>Brand</Label>
-          <Select name='brand' value={brand}>
+          <Select name='brand' value={brand} onChange={hanldeChangeData}>
             <option value=''>-- Select --</option>
             <option value='american'>American</option>
             <option value='european'>Erupean</option>
@@ -61,7 +86,7 @@ const Form = () => {
         </Input>
         <Input>
           <Label>Year</Label>
-          <Select name='year' value={year}>
+          <Select name='year' value={year} onChange={hanldeChangeData}>
             <option value=''>-- Select --</option>
             <option value='2021'>2021</option>
             <option value='2020'>2020</option>
@@ -82,6 +107,7 @@ const Form = () => {
             name='type'
             value='basic'
             checked={type === 'basic'}
+            onChange={hanldeChangeData}
           />
           Basic
           <InputRadio
@@ -89,10 +115,11 @@ const Form = () => {
             name='type'
             value='premium'
             checked={type === 'premium'}
+            onChange={hanldeChangeData}
           />
           Premium
         </Input>
-        <Button type='button'>Quote</Button>
+        <Button type='submit'>Quote</Button>
       </form>
     </>
   );
