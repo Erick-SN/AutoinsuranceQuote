@@ -25,23 +25,28 @@ const Text = styled.p`
 `;
 
 const Result = ({ quote }) => {
-  return quote === 0 ? (
-    <Message>
-      Please choose the make, year of your car and the type of insurance{' '}
-    </Message>
-  ) : (
-    <ResultQuote>
-      <TransitionGroup component='span' className='resultado'>
-        <CSSTransition
-          className='resultado'
-          key={quote}
-          timeout={{ enter: 500, exit: 500 }}>
-          <Text>
-            Quote: $<span>{quote}</span>
-          </Text>
-        </CSSTransition>
-      </TransitionGroup>
-    </ResultQuote>
+  return (
+    <>
+      {quote === 0 ? (
+        <Message>
+          Please choose the make, year of your car and the type of insurance{' '}
+        </Message>
+      ) : (
+        <ResultQuote>
+          <TransitionGroup component='span' className='resultado'>
+            <CSSTransition
+              className='resultado'
+              key={quote}
+              timeout={{ enter: 500, exit: 500 }}>
+              <Text>
+                Quote: $<span>{quote}</span>
+              </Text>
+            </CSSTransition>
+          </TransitionGroup>
+        </ResultQuote>
+      )}
+      ;
+    </>
   );
 };
 
