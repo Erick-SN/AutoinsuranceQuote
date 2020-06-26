@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Form from './components/Form';
+import Abstract from './components/Abstract';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
@@ -14,12 +15,22 @@ const FormContainer = styled.div`
 `;
 
 function App() {
+  const [abstract, setAbstract] = useState({
+    quote: 0,
+    data: {
+      brand: '',
+      year: '',
+      type: '',
+    },
+  });
+  const { data } = abstract;
   return (
     <>
       <Container>
         <Header title='Auto insurance quote' />
         <FormContainer>
-          <Form />
+          <Form setAbstract={setAbstract} />
+          <Abstract data={data} />
         </FormContainer>
       </Container>
     </>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import { getYearDifference } from '../helper';
+import { getYearDifference, getValueBrand, getType } from '../helper';
 const Input = styled.div`
   display: flex;
   margin-bottom: 1rem;
@@ -49,14 +49,14 @@ const Error = styled.div`
   margin-bottom: 2rem;
 `;
 
-const Form = () => {
+const Form = ({ setAbstract }) => {
   const [error, setError] = useState(false);
   const [data, setData] = useState({
     brand: '',
     year: '',
     type: '',
   });
-
+  const { brand, year, type } = data;
   const hanldeChangeData = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -71,9 +71,12 @@ const Form = () => {
     let result = 2000;
     const difference = getYearDifference(year);
     result -= (difference * 3 * result) / 100;
+    result = getValueBrand(brand) * result;
+    const increasedType = getType(type);
+    result = parseFloat(increasedType * result).toFixed(2);
+    setAbstract({ quote: result, data });
   };
 
-  const { brand, year, type } = data;
   return (
     <>
       <form onSubmit={onSubmitQuote}>
