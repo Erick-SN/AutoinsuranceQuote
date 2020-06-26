@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { upperCase } from '../helper';
-
+import PropTypes from 'prop-types';
 const Container = styled.div`
   padding: 1rem;
   text-align: center;
@@ -27,4 +27,7 @@ const Abstract = ({ data }) => {
   );
 };
 
+Abstract.propTypes = {
+  data: PropTypes.object.isRequired,
+};
 export default Abstract;

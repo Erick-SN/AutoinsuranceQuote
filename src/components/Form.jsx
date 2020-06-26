@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 import { getYearDifference, getValueBrand, getType } from '../helper';
+
 const Input = styled.div`
   display: flex;
   margin-bottom: 1rem;
@@ -49,7 +51,7 @@ const Error = styled.div`
   margin-bottom: 2rem;
 `;
 
-const Form = ({ setAbstract }) => {
+const Form = ({ setAbstract, setLoading }) => {
   const [error, setError] = useState(false);
   const [data, setData] = useState({
     brand: '',
@@ -74,7 +76,11 @@ const Form = ({ setAbstract }) => {
     result = getValueBrand(brand) * result;
     const increasedType = getType(type);
     result = parseFloat(increasedType * result).toFixed(2);
-    setAbstract({ quote: result, data });
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setAbstract({ quote: Number(result), data });
+    }, 2000);
   };
 
   return (
@@ -129,6 +135,11 @@ const Form = ({ setAbstract }) => {
       </form>
     </>
   );
+};
+
+Form.propTypes = {
+  setAbstract: PropTypes.func.isRequired,
+  setLoading: PropTypes.func.isRequired,
 };
 
 export default Form;

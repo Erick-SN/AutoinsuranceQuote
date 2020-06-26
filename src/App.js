@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import Form from './components/Form';
 import Result from './components/Result';
+import Spinner from './components/Spinner';
 import Abstract from './components/Abstract';
 import styled from '@emotion/styled';
 
@@ -24,15 +25,17 @@ function App() {
       type: '',
     },
   });
+  const [loading, setLoading] = useState(false);
   const { quote, data } = abstract;
   return (
     <>
       <Container>
         <Header title='Auto insurance quote' />
         <FormContainer>
-          <Form setAbstract={setAbstract} />
+          <Form setAbstract={setAbstract} setLoading={setLoading} />
+          {loading ? <Spinner /> : null}
           <Abstract data={data} />
-          <Result quote={quote} />
+          {!loading ? <Result quote={quote} /> : null}
         </FormContainer>
       </Container>
     </>
