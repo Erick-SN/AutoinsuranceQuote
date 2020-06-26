@@ -13,8 +13,8 @@ body {
 }
 ul {
   list-style: none;
-  padding: none;
-  margin: none;
+  padding: 0;
+  margin: 0;
 }
 span.resultado {
   position: relative;

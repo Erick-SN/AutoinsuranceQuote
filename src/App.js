@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
 import Form from './components/Form';
+import Result from './components/Result';
 import Abstract from './components/Abstract';
 import styled from '@emotion/styled';
 
@@ -23,7 +24,7 @@ function App() {
       type: '',
     },
   });
-  const { data } = abstract;
+  const { quote, data } = abstract;
   return (
     <>
       <Container>
@@ -31,6 +32,7 @@ function App() {
         <FormContainer>
           <Form setAbstract={setAbstract} />
           <Abstract data={data} />
+          <Result quote={quote} />
         </FormContainer>
       </Container>
     </>
